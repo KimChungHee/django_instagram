@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row" id = "signup_page">
+    <div class="col"></div>
+    <div class="col-6">
+        <form action="" method="post">
+          <div class = "alert alert-info">Please enter your account information</div>
+              {% csrf_token %}
+          <label>Username : <input type="text" name="username"></label><br>
+          <label>Password : <input type="password" name="password"></label><br>
+          <label>Repeat Password : <input type="password" name="password2"></label><br>
+        <input type="submit" value="Sign Up" class="btn btn-outline-info" style = "width : 150px; height : 50px; background-color: #000; color : #fff; position: relative; top : 50px; left : 150px; font-size : 25px;">
+      </form>
+      </div>
+      <div class="col"></div>
+</div>
+{% endblock %}

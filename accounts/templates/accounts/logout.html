@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{% endblock %}
+
+{% block content %}
+<div class="row" id = "logout_page">
+  <div class="col"></div>
+  <div class="col-6">
+      <div class="alter alter-primary" role="alert">
+        <p style = "font-size: 50px;">로그아웃 성공! </p>
+        <p style = "font-size: 50px;">당신의 개인정보는 소중해요~ </p>
+      </div>
+      <a href="{% url 'accounts:login' %}" class="btn btn-outline-success">Sign In</a>
+   </div>
+   <div class="col"></div>
+
+ </div>
+ {% endblock %}

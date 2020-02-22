@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block title %}
+{% endblock %}
+
+{% block content %}
+
+<div class='container'>
+
+
+    <div class="row">
+        <!-- <div class="col"></div> -->
+        <div class="col-5">
+            {% for object in object_list %}
+
+            <div class="card">
+                <div class="card-header">
+                    <p>{{ object.author }}</p>
+                    <p style = "font-size : 8px; color:rgba(0,0,0,0.4);">{{ object.created }}</p>
+                </div>
+                <img src=" {{ object.image.url }}" class="card-img-top" alt="..." style = "margin : 0; padding :0;">
+                <div class="card-body2">
+                    <p class="card-text"> {{ object.text }} </p>
+                </div>
+
+
+                <div class="card-body" style = "height : 40px; border-top : solid; border-top-width : 1px; border-top-color : rgba(0,0,0,0.3);">
+                  <ul class="list-group list-group-flush" style = "float : left;">
+                     {% if user.is_authenticated %}
+                     <li class="list-group-item">
+                          <a href="{% url 'photo:like' object.id %}" class="float-left btn-like {%if user in object.like.all %} active {%endif%}">좋아요!</a>
+                          {% if object.like.all.count %}
+                          <span class = "float-left">
+                              {{object.like.all.count}}
+                          </span>
+                          {% endif %}
+                          <a href="{% url 'photo:favorite' object.id %}" class="float-right btn-favorite {%if user in object.favorite.all %}active{%endif%}">저장하기!</a>
+                      </li>
+                      {% endif %}
+                  </ul>
+                  <ul>
+                    <li><a href="{% url 'photo:detail' object.id %}" class="card-link">댓글</a></li>
+                    <li><a href="{% url 'photo:update' object.id %}" class="card-link">수정</a></li>
+                    <li><a href="{% url 'photo:delete' object.id %}" class="card-link">삭제</a></li>
+                  </ul>
+                </div>
+
+            </div>
+            {% endfor %}
+
+        </div>
+
+
+
+    </div>
+</div>
+{% endblock %}
